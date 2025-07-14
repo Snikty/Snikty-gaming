@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snikty Gaming - Configurateur PC</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #121212; color: #eee; padding: 20px; }
+    h1 { color: #e63946; text-align: center; }
+    .config-section { background-color: #1f1f1f; padding: 20px; border-radius: 10px; max-width: 700px; margin: 20px auto; }
+    label, select { display: block; margin: 10px 0; font-size: 1.1em; }
+    select { width: 100%; padding: 10px; border-radius: 5px; border: none; background: #292929; color: white; }
+    .summary { margin-top: 20px; font-size: 1.2em; }
+    .total { font-size: 1.5em; font-weight: bold; margin-top: 10px; color: #f77f00; }
+    button { margin-top: 20px; padding: 15px; background-color: #e63946; color: white; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; width: 100%; }
+    button:hover { background-color: #d62828; }
+  </style>
+</head>
+<body>
+  <h1>Snikty Gaming - Configurateur PC</h1>
+  <div class="config-section">
+    <label for="cpu">Processeur :</label>
+    <select id="cpu" onchange="updatePrice()">
+      <option value="0">Ryzen 5 5600 (inclus)</option>
+      <option value="70">Ryzen 7 5700X (+70 €)</option>
+    </select>
+
+    <label for="gpu">Carte Graphique :</label>
+    <select id="gpu" onchange="updatePrice()">
+      <option value="0">RTX 4060 (inclus)</option>
+      <option value="150">RTX 4070 (+150 €)</option>
+    </select>
+
+    <label for="ram">Mémoire RAM :</label>
+    <select id="ram" onchange="updatePrice()">
+      <option value="0">16 Go (inclus)</option>
+      <option value="40">32 Go (+40 €)</option>
+    </select>
+
+    <label for="ssd">Stockage SSD :</label>
+    <select id="ssd" onchange="updatePrice()">
+      <option value="0">1 To (inclus)</option>
+      <option value="60">2 To (+60 €)</option>
+    </select>
+
+    <div class="summary">
+      <p>Prix de base : 1249 €</p>
+      <p class="total">Prix total : <span id="totalPrice">1249</span> €</p>
+    </div>
+
+    <button onclick="orderPC()">Commander ce PC</button>
+  </div>
+
+  <script>
+    function updatePrice() {
+      const basePrice = 1249;
+      const cpu = parseInt(document.getElementById('cpu').value);
+      const gpu = parseInt(document.getElementById('gpu').value);
+      const ram = parseInt(document.getElementById('ram').value);
+      const ssd = parseInt(document.getElementById('ssd').value);
+      const total = basePrice + cpu + gpu + ram + ssd;
+      document.getElementById('totalPrice').innerText = total;
+    }
+
+    function orderPC() {
+      alert("Commande simulée. Tu peux maintenant connecter Stripe ici.");
+    }
+  </script>
+</body>
+</html>
